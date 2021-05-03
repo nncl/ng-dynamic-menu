@@ -1,0 +1,9 @@
+<ul #menu>
+  <li *ngFor="let item of items">
+    <span *ngIf="!item.children; else branch">{{item.name}}</span>
+    <ng-template #branch>
+      <span>{{item.name}}</span>
+      <app-dynamic-menu #innerPanel [items]="item.children"></app-dynamic-menu>
+    </ng-template>
+  </li>
+</ul>
